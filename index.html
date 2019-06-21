@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jeu tour par tour en JS</title>
+    <meta name="description" content="Jeu tour par tour en JS">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <header class="containerHeader">
+        <h1 id="headerTitle">Bienvenue sur votre jeu de plateau en JS</h1>
+        <div id="fighterSection">
+            <img id="fighterLeft" src="img/redTank.png" alt="Image de tank rouge"/>
+            <img id="fighterRight" src="img/blueTank.png" alt="Image de tank bleu"/>
+        </div>
+    </header>
+   
+    <section class="containerSection">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 playerOne">
+            <div id="playerOneName">Joueur 1</div>
+            <img id="playerOneAvatar" src="img/largeNoAvatar.png" alt="Avatar du joueur 1" />
+            <div id="playerOneAttributes">
+                <div class="attribute cara"> 
+                    <img id="playerOneDamageImg" src="img/smallPower.png" alt="Image d'un gant de boxe" />
+                    <p id="playerOneDamage" class="redPlayer">10</p>
+                </div>
+                <div class="attribute cara"> 
+                    <img id="playerOneLifeImg" src="img/smallLife.png" alt="Image d'un coeur" />
+                    <p id="playerOneLife" class="redPlayer">100</p>
+                </div>
+                <div class="attribute cara"> 
+                    <img id="playerOneStepImg" src="img/smallStep.png" alt="Image de pas" />
+                    <p id="playerOneStep" class="redPlayer">3</p>
+                </div>
+            </div>
+            <div class="attribute weapon">
+                <p id="playerOneWeaponName"> Taser défensif </p>
+                <img id="playerOneWeaponImg" src="img/mediumWeapon1.png" alt="Image d'arme'" />
+            </div>
+        </div>
+    
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 gameMap">
+            <div class="avatarsSection">
+                <div id="avatarsSectionLeft">
+                    <h3 class="avatarSectionTitle">Joueur 1</h3>
+                    <img class="avatarOne handCursor" src="img/largeAvatar1.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar2.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar3.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar4.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar5.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar6.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar7.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar8.png" alt="Avatar du joueur 1" />
+                    <img class="avatarOne handCursor" src="img/largeAvatar9.png" alt="Avatar du joueur 1" />
+                        <form>
+                          <div class="selectName">
+                            <label>Pseudonyme : </label>
+                            <input type="text" id="inputNameOne" required>
+                          </div>
+                        </form>
+                </div>
+                <div id="avatarsSectionRight">
+                    <h3 class="avatarSectionTitle">Joueur 2</h3>
+                    <img class="avatarTwo handCursor" src="img/largeAvatar1.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar2.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar3.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar4.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar5.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar6.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar7.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar8.png" alt="Avatar du joueur 2" />
+                    <img class="avatarTwo handCursor" src="img/largeAvatar9.png" alt="Avatar du joueur 2" />
+                        <form>
+                          <div class="selectName">
+                            <label>Pseudonyme : </label>
+                            <input type="text" id="inputNameTwo" required>
+                          </div>
+                        </form>
+                </div>
+            </div>
+                <canvas class="hidden" id="battleMap" width='300' height ='300'></canvas>
+            <div class="mapSelection">
+            <h3 class="sectionTitle">Génération de la carte</h3>
+            <select id="mapSize" class="handCursor" size=1>
+                <option value=0>Mode normal : 10 x 10</option>
+                <option value=1>Mode difficile : 12 x 12</option>
+                <option value=2>Mode expert : 14 x 14</option>
+            </select>
+            <button class="btn btn-primary" onclick="Map()">Générer la carte</button>
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 playerTwo">
+            <div id="playerTwoName">Joueur 2</div>
+            <img id="playerTwoAvatar" src="img/largeNoAvatar.png" alt="Avatar du joueur 2" />
+            <div id="playerTwoAttributes">
+                <div class="attribute cara"> 
+                    <img id="playerTwoDamageImg" src="img/smallPower.png" alt="Image d'un gant de boxe" />
+                    <p id="playerTwoDamage" class="bluePlayer">10</p>
+                </div>
+                <div class="attribute cara"> 
+                    <img id="playerTwoLifeImg" src="img/smallLife.png" alt="Image d'un coeur" />
+                    <p id="playerTwoLife" class="bluePlayer">100</p>
+                </div>
+                <div class="attribute cara"> 
+                    <img id="playerTwoStepImg" src="img/smallStep.png" alt="Image de pas" />
+                    <p id="playerTwoStep" class="bluePlayer">3</p>
+                </div>              
+            </div>
+            <div class="attribute weapon">
+                <p id="playerTwoWeaponName"> Taser défensif </p>
+                <img id="playerTwoWeaponImg" src="img/mediumWeapon1.png" alt="Image d'arme'" />
+            </div>
+        </div>
+    </section>
+        
+    <footer>
+        <div id="contact">Icons from <a href="https://www.flaticon.com/" 		   
+
+ title="Flaticon">www.flaticon.com</a> licensed by <a 
+
+href="http://creativecommons.org/licenses/by/3.0/" 		    
+
+title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    </footer>
+
+        <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+              integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+              crossorigin="anonymous"></script>
+    	<!-- Javascript perso -->
+    <script src="js/Function.js"></script>
+    <script src="js/Map.js"></script>
+    <script src="js/Display.js"></script>
+  </body>
+
+</html>
