@@ -61,6 +61,7 @@ $('.avatarOne').on({
              alert(`Cet avatar est déjà utilisé par ${nameTwo}`)
          } else
          $('#playerOneAvatar').attr('src', this.src);
+         playerOne.skin = this.src;
      }
  });
 
@@ -72,15 +73,18 @@ $('.avatarTwo').on({
              alert(`Cet avatar est déjà utilisé par ${nameOne}`)
          } else
          $('#playerTwoAvatar').attr('src', this.src);
+         playerTwo.skin = this.src;
      }
  });
 
 // Choix nom de personnage 1
 $('#inputNameOne').on('input',function(e){
      $("#playerOneName").html($(this).val());
+     playerOne.name = document.getElementById("inputNameOne").value;
  });
 
 // Choix nom de personnage 2
 $('#inputNameTwo').on('input',function(e){
      $("#playerTwoName").html($(this).val());
+     playerTwo.name = document.getElementById("inputNameTwo").value; 
  });
