@@ -82,29 +82,29 @@ function checkWallCondition (elt, k, width) {
         (elt[k-1].type != 'wall') &&
         (elt[k+width].type != 'wall') &&
         (elt[k-width].type != 'wall')) {
-          wallCondition = 'true';
-      console.log('condition 1');
+        wallCondition = 'true';
+        console.log('condition 1');
     }
-  } else if ((k > 0)&&
+  } else if ((k > 0) &&
              (k < (width - 1))) { // correspond à la première ligne moins sa première et dernière case
-      if (elt[k+width].type != 'wall'){
-          wallCondition = 'true';
+      if (elt[k+width].type != 'wall') {
+        wallCondition = 'true';
         console.log('condition 2');
       }
-  } else if ((k > ((width * width) - (width +1))) &&
+  } else if ((k > ((width * width) - width)) &&
             (k < ((width * width) - 1))) { // correspond à la dernière ligne moins sa première et dernière case
-      if (elt[k-width].type != 'wall'){
-          wallCondition = 'true';
+      if (elt[k-width].type != 'wall') {
+        wallCondition = 'true';
         console.log('condition 3');
       }
   } else if ((k % width) === 0) { // correspond à la première colonne
       if (elt[k+1].type != 'wall') {
-          wallCondition = 'true';
+        wallCondition = 'true';
         console.log('condition 4');
       }
   } else if ((k % width) === (width-1)) { // correspond à la dernière colonne
       if (elt[k-1].type != 'wall') {
-          wallCondition = 'true';
+        wallCondition = 'true';
         console.log('condition 5');
       }    
   } return wallCondition;
