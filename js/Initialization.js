@@ -5,7 +5,7 @@ const weapon2 = new Weapon('Desert Eagle', 30, 'img/smallWeapon3.png', 'Pistoler
 const weapon3 = new Weapon('AK47', 35, 'img/smallWeapon4.png', 'Fusil automtique très fiable et équipé d\'un chargeur haute capacité');
 const weapon4 = new Weapon('Bazooka', 40, 'img/smallWeapon5.png', 'L\'arme la plus puissante de l\'arsenal de l\'infanterie');
 
-// Attribution de l'attribut true a l'amr par défaut
+// Attribution de l'attribut true à l'arme par défaut
 weapon0.holdByPlayer = true;
 
 // Création des joueurs
@@ -28,9 +28,9 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	const map = new Map (customMapWidth * customMapWidth, customMapWidth, customWallNumber, customSquareSize);
 
 	  map.fillEmpty();
-	  map.addElement('wall', customWallNumber);
-	  map.addElement('weapon', 4);
-	  map.addElement('playerOne', 1);
+	  map.addWall(customWallNumber);
+    map.addWeapon(4);
+    map.addPlayerOne();
 	  map.addPlayerTwo(); 
 	  map.display();
 	  console.log(Object.values(playerOne));

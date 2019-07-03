@@ -23,28 +23,57 @@ class Map {
     return this.squareList.filter(square => square.type === 'empty');
   }
     
-  addElement(type, number) {
+  addWall(number) {
     for (let i = 0; i < number; i++ ){
       let square = this.getEmptySquare();
       let index = randomNb(square.length);
-      square[index].type = type;       
-      console.log(`${type} ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
-      if (type === 'playerOne'){
-        playerOne.positionX = square[index].positionX;
-        playerOne.positionY = square[index].positionY;
-      }
+      square[index].type = 'wall';       
+      console.log(`un mur ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
+      console.log(`avec pour indice ${square[index].squareNumber}`)
     }
   }
 
+  addWeapon(number) {
+    for (let i = 0; i < number; i++ ){
+      let square = this.squareList;
+      let index = randomNb(square.length);
+      let wallCondition = checkWallCondition (square, index, customMapWidth);
+      
+      if ((square[index].type === 'empty') && (wallCondition === 'true')){
+          square[index].type = 'weapon';       
+          console.log(`Arme ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
+          console.log(`avec pour indice ${square[index].squareNumber}`)
+      } else i--;
+    }
+  }
+
+  addPlayerOne() {
+    var i = 0;
+    do {
+      let square = this.squareList;
+      let index = randomNb(square.length);
+      let wallCondition = checkWallCondition (square, index, this.width);
+      
+      if ((square[index].type === 'empty') && (wallCondition === 'true')) {
+        console.log(`playerOne ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
+        playerOne.positionX = square[index].positionX;
+        playerOne.positionY = square[index].positionY;
+        square[index].type = 'playerOne';
+        i = 1;
+        console.log (index);
+        }
+      } while (i < 1);
+  }
+  
   addPlayerTwo() {
     var i = 0;
     do {
-      let square = this.getEmptySquare();
+      let square = this.squareList;
       let index = randomNb(square.length);
       let playerCondition = checkPlayerCondition (playerOne, square, index);
-      let wallCondition = checkWallCondition (square, index, customMapWidth);
+      let wallCondition = checkWallCondition (square, index, this.width);
       
-      if ((playerCondition === 'true') && (wallCondition === 'true')) {
+      if ((square[index].type === 'empty') && (playerCondition === 'true') && (wallCondition === 'true')) {
         console.log(`playerTwo ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
         playerTwo.positionX = square[index].positionX;
         playerTwo.positionY = square[index].positionY;
