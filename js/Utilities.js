@@ -115,11 +115,4 @@ function activePlayer() {
   let index = randomNb(2);
   let activePlayer = players[index];
   return activePlayer.name;
-}
-    
-    
-    
-    
-    
-    
-    
+} 
