@@ -110,7 +110,7 @@ function checkWallCondition (elt, k, width) {
   } return wallCondition;
 }
  
-// Fonction renvoyant le joueur actif
+// Fonction choisissant aléatoirement le joueur actif pour débuter la partie
 function activePlayer() {
   let index = randomNb(2);
   let activePlayer = players[index];
