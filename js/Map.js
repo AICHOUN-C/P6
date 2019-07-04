@@ -38,9 +38,11 @@ class Map {
       let square = this.squareList;
       let index = randomNb(square.length);
       let wallCondition = checkWallCondition (square, index, customMapWidth);
+      const arsenal =[weapon1, weapon2, weapon3, weapon4];
       
       if ((square[index].type === 'empty') && (wallCondition === 'true')){
-          square[index].type = 'weapon';       
+          square[index].type = 'weapon';
+          square[index].object = arsenal[i % 4];      
           console.log(`Arme ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
           console.log(`avec pour indice ${square[index].squareNumber}`)
       } else i--;
@@ -94,7 +96,6 @@ class Map {
   let canvas = document.getElementById('battleMap');
   let context = canvas.getContext('2d');
   const wallSrc = "img/smallWall.png";
-  const arsenal =[weapon1, weapon2, weapon3, weapon4];
   var j = 0;
 
   context.fillStyle = '#b6d369';
@@ -128,5 +129,9 @@ class Map {
       context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize, squareSize -2 , squareSize);
       });
     }
+  }
+
+  getSquare (x, y) {
+    
   }
 }
