@@ -38,15 +38,20 @@ class Map {
       let square = this.squareList;
       let index = randomNb(square.length);
       let wallCondition = checkWallCondition (square, index, customMapWidth);
-      const arsenal =[weapon1, weapon2, weapon3, weapon4];
+      const arsenal = [weapon1, weapon2, weapon3, weapon4];
+      let arsenalSkin = [];
       
-      if ((square[index].type === 'empty') && (wallCondition === 'true')){
+      if ((square[index].type === 'empty') && (wallCondition === true)){
           square[index].type = 'weapon';
-          square[index].object = arsenal[i % 4];      
+          arsenal[i % 4].positionX = square[index].positionX;
+          arsenal[i % 4].positionY = square[index].positionY;
           console.log(`Arme ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
-          console.log(`avec pour indice ${square[index].squareNumber}`)
+          console.log(`avec pour indice ${square[index].squareNumber}`);
+          arsenalSkin.push(arsenal[i % 4].skin);
+          console.log(Object.values(arsenal[i % 4]));
+        console.log (arsenalSkin);
       } else i--;
-    }
+    } return arsenalSkin;
   }
 
   addPlayerOne() {
@@ -56,7 +61,7 @@ class Map {
       let index = randomNb(square.length);
       let wallCondition = checkWallCondition (square, index, this.width);
       
-      if ((square[index].type === 'empty') && (wallCondition === 'true')){
+      if ((square[index].type === 'empty') && (wallCondition === true)){
         console.log(`playerOne ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
         playerOne.positionX = square[index].positionX;
         playerOne.positionY = square[index].positionY;
@@ -75,7 +80,7 @@ class Map {
       let playerCondition = checkPlayerCondition (playerOne, square, index);
       let wallCondition = checkWallCondition (square, index, this.width);
       
-      if ((square[index].type === 'empty') && (playerCondition === 'true') && (wallCondition === 'true')){
+      if ((square[index].type === 'empty') && (playerCondition === true) && (wallCondition === true)){
         console.log(`playerTwo ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
         playerTwo.positionX = square[index].positionX;
         playerTwo.positionY = square[index].positionY;
@@ -108,10 +113,8 @@ class Map {
       if (this.squareList[i].type === "wall") {
         canvasSquare.src = wallSrc;
       } else if (this.squareList[i].type === "weapon") {
-        canvasSquare.src = arsenal[j].skin;
-        arsenal[j].positionX = this.squareList[i].positionX;
-        arsenal[j].positionY = this.squareList[i].positionY;
-        console.log(`Image arme ${arsenal[j].name} définie`);
+        canvasSquare.src = arsenalSkin[j];
+        console.log(`Image arme ${arsenal2[j].name} définie`);
         j++;
       } else if (this.squareList[i].type === 'playerOne') {
         canvasSquare.src = playerOne.skin;

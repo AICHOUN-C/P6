@@ -53,7 +53,7 @@ function SquareSize() {
 
 //Check de la conditions de distance entre les deux joueurs
 function checkPlayerCondition (player, elt, i) {
-  let playerCondition = 'false';
+  let playerCondition = false;
   if (((player.positionX != (elt[i].positionX) - 1) && (player.positionY != (elt[i].positionY) - 1)) &&
         ((player.positionX != elt[i].positionX) && (player.positionY != (elt[i].positionY) - 1)) &&
         ((player.positionX != (elt[i].positionX) + 1) && (player.positionY != (elt[i].positionY) - 1)) &&
@@ -62,14 +62,14 @@ function checkPlayerCondition (player, elt, i) {
         ((player.positionX != (elt[i].positionX) - 1) && (player.positionY != (elt[i].positionY) + 1)) &&      
         ((player.positionX != elt[i].positionX) && (player.positionY != (elt[i].positionY) + 1)) &&
         ((player.positionX != (elt[i].positionX) + 1) && (player.positionY != (elt[i].positionY) + 1))) {
-          playerCondition = 'true';
+          playerCondition = true;
   }
   return playerCondition;
 }
 
 // Check du placement des armes et des joueurs afin qu'ils ne soient pas bloqués par les murs
 function checkWallCondition (elt, k, width) {
-  let wallCondition = 'false';
+  let wallCondition = false;
   //console.log ('elt =' + elt);
   console.log ('k = ' + k);
   console.log ('width =' + width);
@@ -82,29 +82,29 @@ function checkWallCondition (elt, k, width) {
         (elt[k-1].type != 'wall') &&
         (elt[k+width].type != 'wall') &&
         (elt[k-width].type != 'wall')) {
-        wallCondition = 'true';
+        wallCondition = true;
         console.log('condition 1');
     }
   } else if ((k > 0) &&
              (k < (width - 1))) { // correspond à la première ligne moins sa première et dernière case
       if (elt[k+width].type != 'wall') {
-        wallCondition = 'true';
+        wallCondition = true;
         console.log('condition 2');
       }
   } else if ((k > ((width * width) - width)) &&
             (k < ((width * width) - 1))) { // correspond à la dernière ligne moins sa première et dernière case
       if (elt[k-width].type != 'wall') {
-        wallCondition = 'true';
+        wallCondition = true;
         console.log('condition 3');
       }
   } else if ((k % width) === 0) { // correspond à la première colonne
       if (elt[k+1].type != 'wall') {
-        wallCondition = 'true';
+        wallCondition = true;
         console.log('condition 4');
       }
   } else if ((k % width) === (width-1)) { // correspond à la dernière colonne
       if (elt[k-1].type != 'wall') {
-        wallCondition = 'true';
+        wallCondition = true;
         console.log('condition 5');
       }    
   } return wallCondition;
