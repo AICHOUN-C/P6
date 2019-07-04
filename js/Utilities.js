@@ -110,8 +110,12 @@ function checkWallCondition (elt, k, width) {
   } return wallCondition;
 }
  
-    
-    
+// Fonction renvoyant le joueur actif
+function activePlayer() {
+  let index = randomNb(2);
+  let activePlayer = players[index];
+  return activePlayer.name;
+}
     
     
     

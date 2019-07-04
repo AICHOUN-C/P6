@@ -12,6 +12,9 @@ weapon0.holdByPlayer = true;
 const playerOne = new Player('Joueur 1');
 const playerTwo = new Player('Joueur 2');
 
+// Tableau contenant les joueurs
+const players = [playerOne, playerTwo];
+
 // Création de variable pour contenir le choix de l'utilisateur sur le choix de la taille de map
 let customMapWidth = MapWidth();
 let customWallNumber = WallNumber();
@@ -33,6 +36,7 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
     map.addPlayerOne();
 	  map.addPlayerTwo(); 
 	  map.display();
+    activePlayer();
 	  console.log(Object.values(playerOne));
 	  console.log(Object.values(playerTwo));
 	  console.log(Object.values(weapon0));
@@ -40,6 +44,7 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	  console.log(Object.values(weapon2));
 	  console.log(Object.values(weapon3));
 	  console.log(Object.values(weapon4));
+    alert(`La partie commence le joueur ${activePlayer()} commence`);
 
 	}
 } 
