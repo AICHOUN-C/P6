@@ -112,11 +112,36 @@ function checkWallCondition (elt, k, width) {
  
 // Fonction choisissant aléatoirement le joueur actif pour débuter la partie
 function activePlayer() {
-  let index = randomNb(2);
+  let index = randomNb(players.length);
   let activePlayer = players[index];
   return activePlayer.name;
 }
     
+function moveLeft (activePlayer) {
+  this.SquareSize[activePlayer.index].type = 'empty';
+  this.squareList[activePlayer.index - 1] = activePlayer;
+  let positionTempo = activePlayer.positionX - 1;
+  activePlayer.positionX = positionTempo;
+  return activePlayer.positionX;
+}
+
+function moveUp (activePlayer) {
+  let positionTempo = activePlayer.positionY + 1;
+  activePlayer.positionY = positionTempo;
+  return activePlayer.positionY;
+}
+
+function moveRight (activePlayer) {
+  let positionTempo = activePlayer.positionX + 1;
+  activePlayer.positionX = positionTempo;
+  return activePlayer.positionX;
+}
+
+function moveDown (activePlayer) {
+  let positionTempo = activePlayer.positionY - 1;
+  activePlayer.positionY = positionTempo;
+  return activePlayer.positionY;
+}
     
     
     

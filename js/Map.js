@@ -114,10 +114,12 @@ class Map {
         j++;
       } else if (this.squareList[i].type === 'playerOne') {
         canvasSquare.src = playerOne.skin;
-        console.log(`Image ${playerOne.name} définie`);
+        playerOne.index = i;
+        console.log(`Image ${playerOne.name} définie à l'index ${playerOne.index}`);
       } else if (this.squareList[i].type === 'playerTwo') {
         canvasSquare.src = playerTwo.skin;
-        console.log(`Image ${playerTwo.name} définie`);
+        playerTwo.index = i;
+        console.log(`Image ${playerTwo.name} définie à l'index ${playerTwo.index}`);
       }
       const positionX = this.squareList[i].positionX;
       const positionY = this.squareList[i].positionY;
