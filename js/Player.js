@@ -5,6 +5,7 @@ class Player {
     this.skin = null;
     this.positionX = null;
     this.positionY = null;
+		this.index = null;
     this.power = 10;
     this.def = 0;
     this.life = 100;
