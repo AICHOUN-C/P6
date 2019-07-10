@@ -125,61 +125,6 @@ function switchPlayer () {
         activePlayer = playerOne;
     } return activePlayer;
 }
-
-//Coordonnée de la case suivant le déplacement
-function nextSquare(){
-  let nextPosition = {
-    'x' : this.positionX,
-    'y' : this.positionY
-  };
-  
-  switch(direction) {
-		case direction.down : 
-			nextPosition.y++;
-			break;
-		case direction.left : 
-			nextPosition.x--;
-			break;
-		case direction.right : 
-			nextPosition.x++;
-			break;
-		case direction.up : 
-			nextPosition.y--;
-			break;
-	} return nextPosition;
-}
-
-//Fonction de déplacement
-function moveToLeft(activePlayer) {
-  this.SquareSize[activePlayer.index].type = 'empty';
-  this.squareList[activePlayer.index - 1] = activePlayer;
-  let positionTempo = activePlayer.positionX - 1;
-  activePlayer.positionX = positionTempo;
-  return activePlayer.positionX;
-}
-
-function moveToUp (activePlayer) {
-  let positionTempo = activePlayer.positionY + 1;
-  activePlayer.positionY = positionTempo;
-  return activePlayer.positionY;
-}
-
-function moveToRight (activePlayer) {
-  let positionTempo = activePlayer.positionX + 1;
-  activePlayer.positionX = positionTempo;
-  return activePlayer.positionX;
-}
-
-function moveToDown (activePlayer) {
-  let positionTempo = activePlayer.positionY - 1;
-  activePlayer.positionY = positionTempo;
-  return activePlayer.positionY;
-}
-    
- // fonction de rafraichissement de la map après déplacement
-function refreshMap (originSquare, targetSquare, map) {
-		
-}
     
     
     

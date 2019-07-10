@@ -46,6 +46,6 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	  console.log(Object.values(weapon3));
 	  console.log(Object.values(weapon4));
     alert(`La partie commence, c'est le tour de ` + activePlayer.name);
-    movePlayer();
+    movePlayer(map);
 	}
 } 
