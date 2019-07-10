@@ -54,14 +54,14 @@ function SquareSize() {
 //Check de la conditions de distance entre les deux joueurs
 function checkPlayerCondition (player, elt, i) {
   let playerCondition = false;
-  if (((player.positionX != (elt[i].positionX) - 1) && (player.positionY != (elt[i].positionY) - 1)) &&
-        ((player.positionX != elt[i].positionX) && (player.positionY != (elt[i].positionY) - 1)) &&
-        ((player.positionX != (elt[i].positionX) + 1) && (player.positionY != (elt[i].positionY) - 1)) &&
-        ((player.positionX != (elt[i].positionX) - 1) && (player.positionY != elt[i].positionY)) &&
-        ((player.positionX != (elt[i].positionX) + 1) && (player.positionY != elt[i].positionY)) &&
-        ((player.positionX != (elt[i].positionX) - 1) && (player.positionY != (elt[i].positionY) + 1)) &&      
-        ((player.positionX != elt[i].positionX) && (player.positionY != (elt[i].positionY) + 1)) &&
-        ((player.positionX != (elt[i].positionX) + 1) && (player.positionY != (elt[i].positionY) + 1))) {
+  if (((player.positionX !== (elt[i].positionX) - 1) && (player.positionY !== (elt[i].positionY) - 1)) &&
+        ((player.positionX !== elt[i].positionX) && (player.positionY !== (elt[i].positionY) - 1)) &&
+        ((player.positionX !== (elt[i].positionX) + 1) && (player.positionY !== (elt[i].positionY) - 1)) &&
+        ((player.positionX !== (elt[i].positionX) - 1) && (player.positionY !== elt[i].positionY)) &&
+        ((player.positionX !== (elt[i].positionX) + 1) && (player.positionY !== elt[i].positionY)) &&
+        ((player.positionX !== (elt[i].positionX) - 1) && (player.positionY !== (elt[i].positionY) + 1)) &&      
+        ((player.positionX !== elt[i].positionX) && (player.positionY !== (elt[i].positionY) + 1)) &&
+        ((player.positionX !== (elt[i].positionX) + 1) && (player.positionY !== (elt[i].positionY) + 1))) {
           playerCondition = true;
   }
   return playerCondition;
@@ -76,34 +76,34 @@ function checkWallCondition (elt, k, width) {
   
   if ((width < k) &&
       (k < ((width * width) - (width +1))) &&
-      ((k % width) != 0) &&
-      ((k % width) != (width-1))) { // correspond a la map moins les cases en bordures
-    if ((elt[k+1].type != 'wall') &&
-        (elt[k-1].type != 'wall') &&
-        (elt[k+width].type != 'wall') &&
-        (elt[k-width].type != 'wall')) {
+      ((k % width) !== 0) &&
+      ((k % width) !== (width-1))) { // correspond a la map moins les cases en bordures
+    if ((elt[k+1].type !== 'wall') &&
+        (elt[k-1].type !== 'wall') &&
+        (elt[k+width].type !== 'wall') &&
+        (elt[k-width].type !== 'wall')) {
         wallCondition = true;
         console.log('condition 1');
     }
   } else if ((k > 0) &&
              (k < (width - 1))) { // correspond à la première ligne moins sa première et dernière case
-      if (elt[k+width].type != 'wall') {
+      if (elt[k+width].type !== 'wall') {
         wallCondition = true;
         console.log('condition 2');
       }
   } else if ((k > ((width * width) - width)) &&
             (k < ((width * width) - 1))) { // correspond à la dernière ligne moins sa première et dernière case
-      if (elt[k-width].type != 'wall') {
+      if (elt[k-width].type !== 'wall') {
         wallCondition = true;
         console.log('condition 3');
       }
   } else if ((k % width) === 0) { // correspond à la première colonne
-      if (elt[k+1].type != 'wall') {
+      if (elt[k+1].type !== 'wall') {
         wallCondition = true;
         console.log('condition 4');
       }
   } else if ((k % width) === (width-1)) { // correspond à la dernière colonne
-      if (elt[k-1].type != 'wall') {
+      if (elt[k-1].type !== 'wall') {
         wallCondition = true;
         console.log('condition 5');
       }    
@@ -111,8 +111,12 @@ function checkWallCondition (elt, k, width) {
 }
  
 // Fonction choisissant aléatoirement le joueur actif pour débuter la partie
-function activePlayer() {
-  const index = randomNb(2);
-  const activePlayer = players[index];
-  return activePlayer.name;
-} 
+function selectActivePlayer() {
+  let index = randomNb(players.length);
+  activePlayer = players[index];
+  return activePlayer;
+}
+    
+    
+    
+    

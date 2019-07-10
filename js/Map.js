@@ -6,6 +6,8 @@ class Map {
     this.wallNumber = wallNumber;
     this.squareSize = squareSize;
     this.squareList = [];
+    this.arsenal = [weapon1, weapon2, weapon3, weapon4];
+    this.tempo = [];
   }
       
   fillEmpty() {
@@ -34,19 +36,28 @@ class Map {
   }
 
   addWeapon(number) {
-    for (let i = 0; i < number; i++ ){
-      let square = this.squareList;
-      let index = randomNb(square.length);
-      let wallCondition = checkWallCondition (square, index, customMapWidth);
-      
-      if ((square[index].type === 'empty') && (wallCondition === true)){
-          square[index].type = 'weapon';       
-          console.log(`Arme ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
-          console.log(`avec pour indice ${square[index].squareNumber}`)
-      } else i--;
-    }
-  }
 
+    const square = this.squareList;
+    for (let i = 0; i < number; i++ ){  
+      let index = randomNb(square.length);
+      let wallCondition = checkWallCondition (square, index, customMapWidth);     
+      if ((square[index].type === 'empty') && (wallCondition === true)){
+          square[index].type = 'weapon';
+          this.tempo[i % number] = index;
+      } else i--;
+    } this.tempo.sort(function(a, b) {
+      return a - b;
+      });
+    for (let j = 0; j < number; j++){
+      this.arsenal[j % number].positionX = square[this.tempo[j]].positionX;
+      this.arsenal[j % number].positionY = square[this.tempo[j]].positionY;
+      console.log(`Arme ajouté a lindex ${square[this.tempo[j]].positionX} ${square[this.tempo[j]].positionY}`);
+      console.log(`avec pour indice ${square[this.tempo[j]].squareNumber}`);
+      console.log(Object.values(this.arsenal[j % number]));
+    }  
+    
+  } 
+  
   addPlayerOne() {
     var i = 0;
     do {
@@ -94,7 +105,6 @@ class Map {
   let canvas = document.getElementById('battleMap');
   let context = canvas.getContext('2d');
   const wallSrc = "img/smallWall.png";
-  const arsenal =[weapon1, weapon2, weapon3, weapon4];
   var j = 0;
 
   context.fillStyle = '#b6d369';
@@ -103,21 +113,26 @@ class Map {
       context.strokeStyle = 'white';
       context.strokeRect((this.squareList[i].positionX - 1) * this.squareSize, (this.squareList[i].positionY -1) * this.squareSize, this.squareSize, this.squareSize);
       let canvasSquare = new Image();
-
-      if (this.squareList[i].type === "wall") {
-        canvasSquare.src = wallSrc;
-      } else if (this.squareList[i].type === "weapon") {
-        canvasSquare.src = arsenal[j].skin;
-        arsenal[j].positionX = this.squareList[i].positionX;
-        arsenal[j].positionY = this.squareList[i].positionY;
-        console.log(`Image arme ${arsenal[j].name} définie`);
-        j++;
-      } else if (this.squareList[i].type === 'playerOne') {
-        canvasSquare.src = playerOne.skin;
-        console.log(`Image ${playerOne.name} définie`);
-      } else if (this.squareList[i].type === 'playerTwo') {
-        canvasSquare.src = playerTwo.skin;
-        console.log(`Image ${playerTwo.name} définie`);
+        
+      switch (this.squareList[i].type) {
+      	case 'wall' :
+						canvasSquare.src = wallSrc;
+						break;
+				case 'weapon' :
+						canvasSquare.src = this.arsenal[j].skin;
+						console.log(`Image arme ${this.arsenal[j].name} définie`);
+						j++;
+						break;
+				case 'playerOne':
+						canvasSquare.src = playerOne.skin;
+						playerOne.index = i;
+						console.log(`Image ${playerOne.name} définie à l'index ${playerOne.index}`);
+						break;
+				case 'playerTwo':
+						canvasSquare.src = playerTwo.skin;
+						playerTwo.index = i;
+						console.log(`Image ${playerTwo.name} définie à l'index ${playerTwo.index}`);
+						break;
       }
       const positionX = this.squareList[i].positionX;
       const positionY = this.squareList[i].positionY;

@@ -10,10 +10,11 @@ weapon0.holdByPlayer = true;
 
 // Création des joueurs
 const playerOne = new Player('Joueur 1');
-const playerTwo = new Player('Joueur 2');
+let playerTwo = new Player('Joueur 2');
 
 // Tableau contenant les joueurs
 const players = [playerOne, playerTwo];
+let activePlayer ;
 
 // Création de variable pour contenir le choix de l'utilisateur sur le choix de la taille de map
 let customMapWidth = MapWidth();
@@ -24,7 +25,7 @@ function createMap() {
 
 if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	alert (`Veuillez choisir un avatar pour chaque joueur`);
-	console.log (`check erreur`);
+	console.log (`Au moins un des deux avatar est NULL`);
 
 } else {
 	// Création de l'objet map
@@ -36,7 +37,7 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
     map.addPlayerOne();
 	  map.addPlayerTwo(); 
 	  map.display();
-    activePlayer();
+		selectActivePlayer();
 	  console.log(Object.values(playerOne));
 	  console.log(Object.values(playerTwo));
 	  console.log(Object.values(weapon0));
@@ -44,7 +45,6 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	  console.log(Object.values(weapon2));
 	  console.log(Object.values(weapon3));
 	  console.log(Object.values(weapon4));
-    alert(`La partie commence, c'est le tour de ${activePlayer()}`);
-
+    alert(`La partie commence, c'est le tour de ` + activePlayer.name);
 	}
 } 
