@@ -33,7 +33,7 @@ function movePlayer() {
 
 //Fonction de déplacement
 function moveToLeft() {
-  if (activePlayer.index % customMapWidth === 0) {
+  if (activePlayer.index % map.width === 0) {
     return false;
   } 
     console.log('Deplacement vers la gauche de ' + activePlayer.name);
@@ -48,7 +48,7 @@ function moveToLeft() {
 }
 
 function moveToUp() {
-  if (activePlayer.index < customMapWidth) {
+  if (activePlayer.index < map.width) {
     return false;
   }
     console.log('Deplacement vers le haut de ' + activePlayer.name);
@@ -63,7 +63,7 @@ function moveToUp() {
 }
 
 function moveToRight() {
-  if (activePlayer.index % customMapWidth === (customMapWidth - 1)) {
+  if (activePlayer.index % map.width === (map.width - 1)) {
     return false;
   }
     console.log('Deplacement vers la droite de ' + activePlayer.name);
@@ -78,7 +78,7 @@ function moveToRight() {
 }
 
 function moveToDown() {
-  if (activePlayer.index >= ((customMapWidth * customMapWidth) - customMapWidth)){
+  if (activePlayer.index >= ((map.width * map.width) - map.width)){
     return false;
   }
     console.log('Deplacement vers le bas de ' + activePlayer.name);
