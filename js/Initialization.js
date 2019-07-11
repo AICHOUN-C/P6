@@ -20,6 +20,7 @@ let activePlayer ;
 let customMapWidth = MapWidth();
 let customWallNumber = WallNumber();
 let customSquareSize = SquareSize();
+let map = null;
 
 function createMap() {
 
@@ -29,7 +30,7 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 
 } else {
 	// Création de l'objet map
-	const map = new Map (customMapWidth * customMapWidth, customMapWidth, customWallNumber, customSquareSize);
+	map = new Map (customMapWidth * customMapWidth, customMapWidth, customWallNumber, customSquareSize);
 
 	  map.fillEmpty();
 	  map.addWall(customWallNumber);
