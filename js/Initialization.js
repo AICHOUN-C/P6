@@ -20,7 +20,10 @@ let activePlayer ;
 let customMapWidth = MapWidth();
 let customWallNumber = WallNumber();
 let customSquareSize = SquareSize();
-let customSize = MapWidth() * MapWidth();
+
+console.log (customMapWidth * customMapWidth);
+	// Création de l'objet map
+	const map = new Map (customMapWidth * customMapWidth, customMapWidth, customWallNumber, customSquareSize);
 
 function createMap() {
 
@@ -29,8 +32,7 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	console.log (`Au moins un des deux avatar est NULL`);
 
 } else {
-	// Création de l'objet map
-	const map = new Map (customMapWidth * customMapWidth, customMapWidth, customWallNumber, customSquareSize);
+
 
 	  map.fillEmpty();
 	  map.addWall(customWallNumber);

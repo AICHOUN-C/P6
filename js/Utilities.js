@@ -121,12 +121,8 @@ function selectActivePlayer() {
 // Changement de joueur actif
 function switchPlayer() {
     if (activePlayer === playerOne) {
-        playerOne.status = false;
-        playerTwo.status = true;
         activePlayer = playerTwo;   
     } else if (activePlayer === playerTwo) {
-        playerTwo.status = false;
-        playerOne.status = true;
         activePlayer = playerOne;
     } console.log(`C'est le tour de ` + activePlayer.name);
       activePlayer.steps = 3;
