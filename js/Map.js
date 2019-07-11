@@ -40,14 +40,15 @@ class Map {
     const square = this.squareList;
     for (let i = 0; i < number; i++ ){  
       let index = randomNb(square.length);
-      let wallCondition = checkWallCondition (square, index, customMapWidth);     
+      let wallCondition = checkWallCondition (square, index, customMapWidth);
       if ((square[index].type === 'empty') && (wallCondition === true)){
           square[index].type = 'weapon';
           this.tempo[i % number] = index;
       } else i--;
-    } this.tempo.sort(function(a, b) {
+    } 
+    this.tempo.sort(function(a, b) {
       return a - b;
-      });
+    });
     for (let j = 0; j < number; j++){
       this.arsenal[j % number].positionX = square[this.tempo[j]].positionX;
       this.arsenal[j % number].positionY = square[this.tempo[j]].positionY;
