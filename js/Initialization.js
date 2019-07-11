@@ -20,6 +20,7 @@ let activePlayer ;
 let customMapWidth = MapWidth();
 let customWallNumber = WallNumber();
 let customSquareSize = SquareSize();
+let customSize = MapWidth() * MapWidth();
 
 function createMap() {
 

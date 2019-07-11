@@ -10,6 +10,6 @@ class Player {
     this.def = 0;
     this.life = 100;
     this.steps = 3;
-    this.weapon = null;
+    this.weapon = weapon0;
   }
 }

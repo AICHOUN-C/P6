@@ -4,7 +4,7 @@ function movePlayer() {
   let e = event || window.event;
   let key = e.which || e.keyCode;
   let player = activePlayer;
-
+    
     switch(key) {
       case 38 : case 122 : case 119 : case 90 : case 87 : // Flèche haut, z, w, Z, W
         moveToUp();
@@ -35,41 +35,65 @@ function movePlayer() {
 function moveToLeft() {
   if (activePlayer.index % customMapWidth === 0) {
     return false;
-  }
-  activePlayer.index--;
-  activePlayer.positionX--;
-  return activePlayer.positionX;
+  } 
+    console.log('Deplacement vers la gauche de ' + activePlayer.name);
+    activePlayer.index--;
+    activePlayer.positionX--;
+    activePlayer.steps--;
+    //refreshPlayerInfo();
+      if (activePlayer.steps === 0){
+      switchPlayer();
+      } 
+    return activePlayer.positionX;
 }
 
 function moveToUp() {
   if (activePlayer.index < customMapWidth) {
     return false;
   }
-  activePlayer.index = activePlayer.index - customMapWidth;
-  activePlayer.positionY--;
-  return activePlayer.positionY;
+    console.log('Deplacement vers le haut de ' + activePlayer.name);
+    activePlayer.index = activePlayer.index - customMapWidth;
+    activePlayer.positionY--;
+    activePlayer.steps--;
+    //refreshPlayerInfo()
+      if (activePlayer.steps === 0){
+        switchPlayer();
+        }
+    return activePlayer.positionY;
 }
 
 function moveToRight() {
   if (activePlayer.index % customMapWidth === (customMapWidth - 1)) {
     return false;
   }
-  activePlayer.index++;
-  activePlayer.positionX++;
-  return activePlayer.positionX;
+    console.log('Deplacement vers la droite de ' + activePlayer.name);
+    activePlayer.index++;
+    activePlayer.positionX++;
+    activePlayer.steps--;
+    //refreshPlayerInfo()
+    if (activePlayer.steps === 0){
+    switchPlayer();
+    }
+    return activePlayer.positionX;
 }
 
 function moveToDown() {
-  if (activePlayer.index){
+  if (activePlayer.index >= ((customMapWidth * customMapWidth) - customMapWidth)){
     return false;
   }
-  activePlayer.index = activePlayer.index + customMapWidth;
-  activePlayer.positionY = activePlayer.positionY + 1;
-  return activePlayer.positionY;
+    console.log('Deplacement vers le bas de ' + activePlayer.name);
+    activePlayer.index = activePlayer.index + customMapWidth;
+    activePlayer.positionY = activePlayer.positionY + 1;
+    activePlayer.steps--;
+    //refreshPlayerInfo();
+    if (activePlayer.steps === 0){
+    switchPlayer();
+    }
+    return activePlayer.positionY;
 }
     
  // fonction de rafraichissement de la map après déplacement
-function refreshMap(originSquare, targetSquare, map) {
+function refreshMap(originSquare, nextSquare, map) {
 		
 }
 

@@ -51,7 +51,7 @@ function SquareSize() {
   return squareSize;
 }
 
-//Check de la conditions de distance entre les deux joueurs
+// Check de la conditions de distance entre les deux joueurs
 function checkPlayerCondition (player, elt, i) {
   let playerCondition = false;
   if (((player.positionX !== (elt[i].positionX) - 1) && (player.positionY !== (elt[i].positionY) - 1)) &&
@@ -114,18 +114,38 @@ function checkWallCondition (elt, k, width) {
 function selectActivePlayer() {
   let index = randomNb(players.length);
   activePlayer = players[index];
+  activePlayer.status = true;
   return activePlayer;
 }
 
-//Changement de joueur actif
-function switchPlayer () {
+// Changement de joueur actif
+function switchPlayer() {
     if (activePlayer === playerOne) {
-        activePlayer = playerTwo;
+        playerOne.status = false;
+        playerTwo.status = true;
+        activePlayer = playerTwo;   
     } else if (activePlayer === playerTwo) {
+        playerTwo.status = false;
+        playerOne.status = true;
         activePlayer = playerOne;
-    } return activePlayer;
+    } console.log(`C'est le tour de ` + activePlayer.name);
+      activePlayer.steps = 3;
+      return activePlayer;
 }
-    
+
+// Mise à jour des info joueur
+function refreshPlayerOne() {
+  
+  let playerPower = playerOne.power;
+  let playerLife = playerOne.life;
+  let playerSteps = playerOne.steps;
+  
+  document.getElementById('playerOneDamage').appendChild(playerPower);
+  document.getElementById('playerOneLife').appendChild(playerLife);
+  document.getElementById('playerOneStep').appendChild(playerSteps);
+  
+}
+
     
     
     
