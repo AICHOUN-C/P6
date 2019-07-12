@@ -65,7 +65,8 @@ class Map {
         console.log(`playerOne ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
         playerOne.positionX = square[index].positionX;
         playerOne.positionY = square[index].positionY;
-        square[index].type = 'playerOne';
+        square[index].type = 'player';
+        square[index].object = playerOne;
         i = 1;
         console.log (index);
         }
@@ -84,7 +85,8 @@ class Map {
         console.log(`playerTwo ajouté a lindex ${square[index].positionX} ${square[index].positionY}`);
         playerTwo.positionX = square[index].positionX;
         playerTwo.positionY = square[index].positionY;
-        square[index].type = 'playerTwo';
+        square[index].type = 'player';
+        square[index].object = playerTwo;
         i = 1;
         console.log (index);
         }
@@ -117,15 +119,10 @@ class Map {
 						canvasSquare.src = this.squareList[i].object.skin;
 						console.log(`Image arme ${this.squareList[i].object.name} définie`);
 						break;
-				case 'playerOne':
-						canvasSquare.src = playerOne.skin;
-						playerOne.index = i;
-						console.log(`Image ${playerOne.name} définie à l'index ${playerOne.index}`);
-						break;
-				case 'playerTwo':
-						canvasSquare.src = playerTwo.skin;
-						playerTwo.index = i;
-						console.log(`Image ${playerTwo.name} définie à l'index ${playerTwo.index}`);
+				case 'player':
+						canvasSquare.src = this.squareList[i].object.skin;
+						this.squareList[i].object.index = i;
+						console.log(`Image ${this.squareList[i].object.name} définie à l'index ${this.squareList[i].object.index}`);
 						break;
       }
       const positionX = this.squareList[i].positionX;
