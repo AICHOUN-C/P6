@@ -115,23 +115,29 @@
     display: inline-block;
 }
 #playerOneAvatar, #playerTwoAvatar {
-    margin-bottom: 30px;
-    max-height: 128px;
-    max-width: 128px;
+  margin-bottom: 30px;
+  max-height: 128px;
+  max-width: 128px;
+  border: 2px outset red;
 }
 #playerOneAttributes, #playerTwoAttributes {
     padding: 0 40px 0 40px;
 }
-#playerOneWeaponName, #playerTwoWeaponName{
+#playerOneWeaponName, #playerTwoWeaponName {
     font-weight: bold;
     font-size: 1.5em;
 }
-.redPlayer, .bluePlayer{
+#playerOneWeaponImg, #playerTwoWeaponImg {
+  min-height: 128px;
+  min-width: 128px;
+  
+}
+.redPlayer, .bluePlayer {
     color: red;
     font-weight: bold;
     font-size: 1.5em;
 }
-.bluePlayer{
+.bluePlayer {
     color: blue;
     font-weight: bold;
 }

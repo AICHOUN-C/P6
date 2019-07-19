@@ -130,18 +130,39 @@ function switchPlayer() {
 }
 
 // Mise à jour des info joueur
-function refreshPlayerOne() {
-  
-  let playerPower = playerOne.power;
-  let playerLife = playerOne.life;
-  let playerSteps = playerOne.steps;
-  
-  document.getElementById('playerOneDamage').appendChild(playerPower);
-  document.getElementById('playerOneLife').appendChild(playerLife);
-  document.getElementById('playerOneStep').appendChild(playerSteps);
-  
+function refreshPlayers() {
+  // joueur 1
+  document.getElementById('playerOneDamage').textContent = playerOne.power;
+  document.getElementById('playerOneLife').textContent = playerOne.life;
+  document.getElementById('playerOneStep').textContent = playerOne.steps;
+  document.getElementById('playerOneWeaponName').textContent = playerOne.weapon.name;
+  document.getElementById('playerOneWeaponImg').src = playerOne.weapon.skin2;
+  if (playerOne.steps === 0) {
+    document.getElementById('playerOneStepImg').src = 'img/smallNoStep.png';
+  } else {
+    document.getElementById('playerOneStepImg').src = 'img/smallStep.png';
+    }
+  // joueur 2
+  document.getElementById('playerTwoDamage').textContent = playerTwo.power;
+  document.getElementById('playerTwoLife').textContent = playerTwo.life;
+  document.getElementById('playerTwoStep').textContent = playerTwo.steps;
+  document.getElementById('playerTwoWeaponName').textContent = playerTwo.weapon.name;
+  document.getElementById('playerTwoWeaponImg').src = playerTwo.weapon.skin2;
+    if (playerTwo.steps === 0) {
+    document.getElementById('playerTwoStepImg').src = 'img/smallNoStep.png';
+  } else {
+    document.getElementById('playerTwoStepImg').src = 'img/smallStep.png';
+    }
 }
 
+// Changement d'arme
+
+function switchWeapon() {
+  let dropWeapon = activePlayer.weapon;
+  activePlayer.weapon = map.squareList[activePlayer.index].weapon;
+  map.squareList[activePlayer.index].weapon = dropWeapon;
+  activePlayer.power = activePlayer.weapon.damage;
+}
     
     
     
