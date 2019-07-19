@@ -41,9 +41,9 @@ const players = [playerOne, playerTwo];
 let activePlayer ;
 
 // Création de variable pour contenir le choix de l'utilisateur sur le choix de la taille de map
-let customMapWidth = MapWidth();
-let customWallNumber = WallNumber();
-let customSquareSize = SquareSize();
+const customMapWidth = MapWidth();
+const customWallNumber = WallNumber();
+const customSquareSize = SquareSize();
 let map = null;
 
 console.log (customMapWidth * customMapWidth);
@@ -59,8 +59,8 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
   map = new Map (customMapWidth * customMapWidth, customMapWidth, customWallNumber, customSquareSize);
 	map.fillEmpty();
 	map.addWall(customWallNumber);
-    map.addWeapon(4);
-    map.addPlayerOne();
+  map.addWeapon(4);
+  map.addPlayerOne();
 	map.addPlayerTwo(); 
 	map.display();
 	selectActivePlayer();
@@ -71,7 +71,7 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	console.log(Object.values(weapon2));
 	console.log(Object.values(weapon3));
 	console.log(Object.values(weapon4));
-    alert(`La partie commence, c'est le tour de ` + activePlayer.name);
-    movePlayer(map);
+  alert(`La partie commence, c'est le tour de ` + activePlayer.name);
+  movePlayer(map);
 	}
 } 
