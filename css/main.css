@@ -157,31 +157,26 @@ canvas {
 #gameMenu {
   background-color: #b6d369;
   min-height: 640px;
-  display: inline;
+  display: flex;
+  justify-content: space-around;
 }
 #fightMenu {
   background-color: #b6d369;
 }
-#fightMessage {
+.fightMessage {
   min-height: 460px;
   background-color: #b6d369;
-}
-#redMessage {
-  color: red;
-}
-#blueMessage{
-  color: blue;
 }
 #playerOneMenu, #playerTwoMenu {
   display: inline-block;
 }
 #playerOneMenu{
   background-color: #b2945b;
-  height: 200px;
+  height: 140px;
 }
-#playertwoMenu{
+#playerTwoMenu{
   background-color: #93c48b;
-  height: 200px;
+  height: 140px;
 }
 /* Styles pour les Smartphone*/
 

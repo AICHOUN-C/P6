@@ -54,24 +54,25 @@ class Player {
     let damage = activePlayer.power - target.def;
     target.life = target.life - damage;
     log = `${activePlayer.name} a attaqué ${target.name} et lui a infligé ${damage} point de dégats!`;
-    if (activePlayer === playerOne){
-      appendLogToDomRed(log);
-    } else {
-      appendLogToDomBlue(log);
-    }
+      if (activePlayer === playerOne){
+        appendLogToDom(log, 'red');
+      } else {
+        appendLogToDom(log, 'blue');
+        }
     target.def = 0;
     refreshPlayers();
-    if (target.life <= 0)
-    alert(`${target.name}, n'a plus de points de vie, ${activePlayer.name} a gagné! La partie est terminée`)
+    if (target.life <= 0){
+      alert(`${target.name}, n'a plus de points de vie, ${activePlayer.name} a gagné! La partie est terminée`);
+    }
   }
   
   defend(activePlayer, target) {
     activePlayer.def = Math.floor(target.power/2);
     log = `${activePlayer.name} choisit de se défendre, ses prochains dégats subit seront reduit de ${activePlayer.def}`;
     if (activePlayer === playerOne){
-      appendLogToDomRed(log);
+      appendLogToDom(log, 'red');
     } else {
-      appendLogToDomBlue(log);
+      appendLogToDom(log, 'blue');
     }
   } 
 }

@@ -91,24 +91,15 @@ $('#inputNameTwo').on('input',function(e){
   playerTwo.name = document.getElementById("inputNameTwo").value; 
 });
 
-function appendLogToDomRed(log) {
+function appendLogToDom(log, color) {
   // create a new para element 
-	let para = document.createElement("P");
-	//give a class name
-	para.setAttribute('class', 'redMessage'); 
+	let para = document.createElement("P"); 
 	// and give it some content 
 	para.innerHTML = log;
 	//Append <p> to <div> with id="complexQuote.display"
-	document.getElementById('message').appendChild(para);
-}
-
-function appendLogToDomBlue(log) {
-  // create a new para element 
-	let para = document.createElement("P");
-	//give a class name
-	para.setAttribute('class', 'blueMessage'); 
-	// and give it some content 
-	para.innerHTML = log;
-	//Append <p> to <div> with id="complexQuote.display"
-	document.getElementById('message').appendChild(para);
+  if (color ==='red') {
+	document.getElementById('message').appendChild(para).style.color = 'red';
+  } else {
+  document.getElementById('message').appendChild(para).style.color = 'blue';  
+  }
 }
