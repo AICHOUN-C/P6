@@ -40,6 +40,9 @@ weapon0.holdByPlayer = true;
 const playerOne = new Player('Joueur 1');
 const playerTwo = new Player('Joueur 2');
 
+// Stockage des messages de combat
+let log = null;
+
 // Tableau contenant les joueurs
 const players = [playerOne, playerTwo];
 let activePlayer ;

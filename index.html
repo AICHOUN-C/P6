@@ -46,7 +46,25 @@
                 <img id="playerOneWeaponImg" src="img/mediumWeapon1.png" alt="Image d'arme'" />
             </div>
         </div>
-    
+          <div class="col-md-6 col-lg-8 hidden" id="fightMenu">
+            <div class="fightMessage">
+              <h3>Messages de combat</h3>
+              <div id="message">
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-12 gameMenu">
+              <div class="col-md-6 col-lg-6 playerOneMenu">
+                <h3>Commandes joueur 1</h3>
+                <button class="btn btn-danger" onclick="playerOne.attack(playerOne, playerTwo)">Attaquer</button>
+                <button class="btn btn-primary" onclick="playerOne.defend(playerOne, playerTwo)">Défendre</button>
+              </div>
+              <div class="col-md-6 col-lg-6 playerTwoMenu">
+                <h3>Commandes joueur 2</h3>
+                <button class="btn btn-danger" onclick="playerTwo.attack(playerTwo, playerOne)">Attaquer</button>
+                <button class="btn btn-primary" onclick="playerTwo.defend(playerTwo, playerOne)">Défendre</button>
+              </div>
+            </div>
+          </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 gameMap">
             <div class="avatarsSection">
                 <div id="avatarsSectionLeft">

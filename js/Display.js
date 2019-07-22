@@ -90,3 +90,25 @@ $('#inputNameTwo').on('input',function(e){
   $("#playerTwoName").html($(this).val());
   playerTwo.name = document.getElementById("inputNameTwo").value; 
 });
+
+function appendLogToDomRed(log) {
+  // create a new para element 
+	let para = document.createElement("P");
+	//give a class name
+	para.setAttribute('class', 'redMessage'); 
+	// and give it some content 
+	para.innerHTML = log;
+	//Append <p> to <div> with id="complexQuote.display"
+	document.getElementById('message').appendChild(para);
+}
+
+function appendLogToDomBlue(log) {
+  // create a new para element 
+	let para = document.createElement("P");
+	//give a class name
+	para.setAttribute('class', 'blueMessage'); 
+	// and give it some content 
+	para.innerHTML = log;
+	//Append <p> to <div> with id="complexQuote.display"
+	document.getElementById('message').appendChild(para);
+}

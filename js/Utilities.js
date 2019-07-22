@@ -173,5 +173,13 @@ function switchWeapon() {
   activePlayer.power = activePlayer.weapon.damage;
 }
     
-    
+function target() {
+  let target = null;
+  if (activePlayer === playerOne) {
+    target = playerTwo;
+  } else {
+    target = playerOne;
+    }
+  return target;
+}    
     
