@@ -182,4 +182,17 @@ function target() {
     }
   return target;
 }    
-    
+ 
+function switchPlayerTurn() {
+  if (activePlayer === playerOne) {
+        activePlayer = playerTwo;
+        playerOneBorder.style.border = 'hidden'; 
+        playerTwoBorder.style.border = '5px outset blue';  
+    } else if (activePlayer === playerTwo) {
+        activePlayer = playerOne;
+        playerTwoBorder.style.border = 'hidden'; 
+        playerOneBorder.style.border = '5px outset red'; 
+    }
+  menuOne.classList.toggle('hidden');
+  menuTwo.classList.toggle('hidden'); 
+}

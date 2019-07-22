@@ -167,9 +167,6 @@ canvas {
   min-height: 460px;
   background-color: #b6d369;
 }
-#playerOneMenu, #playerTwoMenu {
-  display: inline-block;
-}
 #playerOneMenu{
   background-color: #b2945b;
   height: 140px;

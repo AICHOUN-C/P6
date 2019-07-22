@@ -18,7 +18,6 @@ class Player {
     map.squareList[activePlayer.index].object = null;
     if (operator === 'less') {
       if (map.squareList[activePlayer.index - lenght].type === 'player') {
-        alert('Le combat commence !');
         fight();
       } else {
         activePlayer.index = activePlayer.index - lenght;
@@ -29,7 +28,6 @@ class Player {
         }
     } else {
       if (map.squareList[activePlayer.index + lenght].type === 'player') {
-        alert('Le combat commence !');
         fight();
       } else {
         activePlayer.index = activePlayer.index + lenght;
@@ -64,15 +62,17 @@ class Player {
     if (target.life <= 0){
       alert(`${target.name}, n'a plus de points de vie, ${activePlayer.name} a gagné! La partie est terminée`);
     }
+    switchPlayerTurn()
   }
   
   defend(activePlayer, target) {
     activePlayer.def = Math.floor(target.power/2);
-    log = `${activePlayer.name} choisit de se défendre, ses prochains dégats subit seront reduit de ${activePlayer.def}`;
+    log = `${activePlayer.name} choisit de se défendre, ses prochains dégats subits seront réduit de ${activePlayer.def}`;
     if (activePlayer === playerOne){
       appendLogToDom(log, 'red');
     } else {
       appendLogToDom(log, 'blue');
     }
+    switchPlayerTurn()
   } 
 }
