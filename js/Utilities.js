@@ -115,15 +115,24 @@ function selectActivePlayer() {
   let index = randomNb(players.length);
   activePlayer = players[index];
   activePlayer.status = true;
+  if (activePlayer === playerOne) {
+    playerOneBorder.style.border = '5px outset red';
+  } else {
+    playerTwoBorder.style.border = '5px outset blue';
+    }
   return activePlayer;
 }
 
 // Changement de joueur actif
 function switchPlayer() {
     if (activePlayer === playerOne) {
-        activePlayer = playerTwo;   
+        activePlayer = playerTwo;
+        playerOneBorder.style.border = 'hidden'; 
+        playerTwoBorder.style.border = '5px outset blue';  
     } else if (activePlayer === playerTwo) {
         activePlayer = playerOne;
+        playerTwoBorder.style.border = 'hidden'; 
+        playerOneBorder.style.border = '5px outset red'; 
     } console.log(`C'est le tour de ` + activePlayer.name);
       activePlayer.steps = 3;
       return activePlayer;

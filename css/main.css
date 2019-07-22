@@ -9,6 +9,9 @@
 	src: url('../polices/pacifico/Pacifico.ttf');
 }
 
+/*body {
+    background: #b6d369 !important;
+}*/
 .containerHeader {
 	background-color : #898952;
 	min-height: 200px;
@@ -118,7 +121,6 @@
   margin-bottom: 30px;
   max-height: 128px;
   max-width: 128px;
-  border: 2px outset red;
 }
 #playerOneAttributes, #playerTwoAttributes {
     padding: 0 40px 0 40px;

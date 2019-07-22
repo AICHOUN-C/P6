@@ -99,6 +99,7 @@ class Map {
   $('header').addClass('hidden');
   $('div.avatarsSection').addClass('hidden');
   $('canvas').removeClass('hidden');
+  $('div.mapSelection').addClass('hidden');
 
   // Création d'un élément canvas en 2D sans transparence pour accueillir la map  
   canvas = document.getElementById('battleMap');

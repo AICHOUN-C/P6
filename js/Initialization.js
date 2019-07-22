@@ -1,3 +1,7 @@
+// Création de constante pour la gestion des bordures du joueur actif
+const playerOneBorder = document.getElementById("playerOneAvatar");
+const playerTwoBorder = document.getElementById("playerTwoAvatar");
+
 // Déclaration des variables inhérentes au canvas
 let canvas = null;
 let context = null;
