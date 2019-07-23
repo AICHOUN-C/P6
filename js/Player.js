@@ -60,6 +60,8 @@ class Player {
     target.def = 0;
     refreshPlayers();
     if (target.life <= 0){
+      let gameOver = new Audio('sounds/gameOver.wav');
+      gameOver.play();
       alert(`${target.name}, n'a plus de points de vie, ${activePlayer.name} a gagné! La partie est terminée`);
     }
     switchPlayerTurn()

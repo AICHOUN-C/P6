@@ -171,6 +171,8 @@ function switchWeapon() {
   activePlayer.weapon = map.squareList[activePlayer.index].weapon;
   map.squareList[activePlayer.index].weapon = dropWeapon;
   activePlayer.power = activePlayer.weapon.damage;
+  let weaponSwitch = new Audio('sounds/weaponSwitch.wav');
+  weaponSwitch.play();
 }
     
 function target() {
