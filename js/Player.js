@@ -67,7 +67,7 @@ class Player {
   
   defend(activePlayer, target) {
     activePlayer.def = Math.floor(target.power/2);
-    log = `${activePlayer.name} choisit de se défendre, ses prochains dégats subits seront réduit de ${activePlayer.def}`;
+    log = `${activePlayer.name} choisit de se défendre, ses prochains dégats subits seront réduit de ${activePlayer.def}.`;
     if (activePlayer === playerOne){
       appendLogToDom(log, 'red');
     } else {

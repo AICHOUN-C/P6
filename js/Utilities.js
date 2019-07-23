@@ -196,3 +196,30 @@ function switchPlayerTurn() {
   menuOne.classList.toggle('hidden');
   menuTwo.classList.toggle('hidden'); 
 }
+
+//Désactivation des touches de déplacement :
+function disableKeyboard(event) {
+  window.onkeydown = function(event){
+  // On récupère le code de la touche
+  let e = event || window.event;
+  let key = e.which || e.keyCode;
+    if ((key < 41 &&
+        key > 36) ||
+        key === 65 ||
+        key === 68 ||
+        key === 81 ||
+        key === 83 ||
+        key === 87 ||
+        key === 90 ||
+        key === 97 ||
+        key === 100 ||
+        key === 113 ||
+        key === 115 ||
+        key === 119 ||
+        key === 122
+       ) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+}
