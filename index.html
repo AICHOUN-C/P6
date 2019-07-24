@@ -40,6 +40,9 @@
                     <img id="playerOneStepImg" src="img/smallStep.png" alt="Image de pas" title="Nombre de déplacement restant" />
                     <p id="playerOneStep" class="redPlayer">3</p>
                 </div>
+								<div class="hidden" id="playerOneTurn">
+									<button class="btn btn-warning" onclick="switchPlayer()">Terminer le tour</button>
+								</div>
             </div>
             <div class="attribute weapon">
                 <p id="playerOneWeaponName"> Taser défensif </p>
@@ -131,7 +134,10 @@
                 <div class="attribute cara"> 
                     <img id="playerTwoStepImg" src="img/smallStep.png" alt="Image de pas" title="Nombre de déplacement restant" />
                     <p id="playerTwoStep" class="bluePlayer">3</p>
-                </div>              
+                </div>
+								<div class="hidden" id="playerTwoTurn">
+									<button class="btn btn-warning" onclick="switchPlayer()">Terminer le tour</button>
+								</div>
             </div>
             <div class="attribute weapon">
                 <p id="playerTwoWeaponName"> Taser défensif </p>

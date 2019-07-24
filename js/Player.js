@@ -16,6 +16,9 @@ class Player {
   move(positionXY, operator, lenght) {
     map.squareList[activePlayer.index].type = 'empty';
     map.squareList[activePlayer.index].object = null;
+		let origin = activePlayer.index;
+		let next = null;
+    //map.refreshOrigin(origin);
     if (operator === 'less') {
       if (map.squareList[activePlayer.index - lenght].type === 'player') {
         fight();
@@ -32,20 +35,25 @@ class Player {
       } else {
         activePlayer.index = activePlayer.index + lenght;
         positionXY = positionXY + lenght;
-        activePlayer.steps--;
+        activePlayer.steps--;   
         map.squareList[activePlayer.index].type = 'player';
         map.squareList[activePlayer.index].object = activePlayer;
         }
       }
+		 	next = activePlayer.index
       if (map.squareList[activePlayer.index].weapon !== null){
         switchWeapon();
       }
-
+      map.refreshOrigin(origin);
+      map.refreshTarget(next);
+      map.refreshWeapon(origin);
+			if (activePlayer.steps < 3) {
+				endTurnDisplay();
+			}
       if (activePlayer.steps === 0){
         switchPlayer();
       }
-        refreshPlayers();
-        map.refresh();
+        refreshPlayers();  
   }
   
   attack(activePlayer, target) {

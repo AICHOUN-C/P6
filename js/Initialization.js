@@ -44,6 +44,8 @@ const playerTwo = new Player('Joueur 2');
 let log = null;
 let menuOne = document.getElementById('playerOneMenu');
 let menuTwo = document.getElementById('playerTwoMenu');
+let playerOneTurn = document.getElementById('playerOneTurn');
+let playerTwoTurn = document.getElementById('playerTwoTurn');
 
 // Tableau contenant les joueurs
 const players = [playerOne, playerTwo];

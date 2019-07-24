@@ -126,10 +126,12 @@ function selectActivePlayer() {
 // Changement de joueur actif
 function switchPlayer() {
     if (activePlayer === playerOne) {
+				playerOneTurn.classList.add('hidden');
         activePlayer = playerTwo;
         playerOneBorder.style.border = 'hidden'; 
         playerTwoBorder.style.border = '5px outset blue';  
     } else if (activePlayer === playerTwo) {
+				playerTwoTurn.classList.add('hidden');
         activePlayer = playerOne;
         playerTwoBorder.style.border = 'hidden'; 
         playerOneBorder.style.border = '5px outset red'; 
@@ -196,7 +198,16 @@ function switchPlayerTurn() {
         playerOneBorder.style.border = '5px outset red'; 
     }
   menuOne.classList.toggle('hidden');
-  menuTwo.classList.toggle('hidden'); 
+  menuTwo.classList.toggle('hidden');
+	
+}
+
+function endTurnDisplay() {
+	if (activePlayer === playerOne){
+		playerOneTurn.classList.remove('hidden');
+	} else {
+		playerTwoTurn.classList.remove('hidden');
+	}
 }
 
 //Désactivation des touches de déplacement :

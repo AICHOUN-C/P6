@@ -128,75 +128,49 @@ class Map {
       const positionY = this.squareList[i].positionY;
       const squareSize = this.squareSize;
       canvasSquare.addEventListener('load', function() {
-      context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize, squareSize -2 , squareSize);
+      context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize + 1, squareSize -2 , squareSize - 2);
       });
     } return context;
   }
-  
-    refresh() {
-  // Création d'un élément canvas en 2D sans transparence pour accueillir la map  
-  canvas = document.getElementById('battleMap');
-  context = canvas.getContext('2d');
-  const wallSrc = "img/smallWall.png";
-
-  context.fillStyle = '#b6d369';
-  context.fillRect(0, 0, this.squareSize * this.width, this.squareSize * this.width);
-    for (var i = 0; i < this.size; i++) {    
-      context.strokeStyle = 'white';
-      context.strokeRect((this.squareList[i].positionX - 1) * this.squareSize, (this.squareList[i].positionY -1) * this.squareSize, this.squareSize, this.squareSize);
-      let canvasSquare = new Image();
-        
-      if (this.squareList[i].type === 'wall') {
-        canvasSquare.src = wallSrc;
-      } else if (this.squareList[i].weapon !== null) {
-        canvasSquare.src = this.squareList[i].weapon.skin;
-        this.squareList[i].weapon.index = i;
-      } else if (this.squareList[i].type === 'player') {
-        canvasSquare.src = this.squareList[i].object.skin;
-        this.squareList[i].object.index = i;
-      }
-      const positionX = this.squareList[i].positionX;
-      const positionY = this.squareList[i].positionY;
-      const squareSize = this.squareSize;
-      canvasSquare.addEventListener('load', function() {
-      context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize, squareSize -2 , squareSize);
-      });
-    }
-  }
 
   refreshOrigin(origin) {
-  let canvasSquare = new Image();
-
-    if (this.squareList[origin].weapon === null) {
-      canvasSquare.src = 'img/empty.png';
-    } else {
-      canvasSquare.src = this.squareList[origin].weapon.skin;
-      this.squareList[origin].weapon.index = i;
-      console.log(`Image ${this.squareList[origin].weapon.name} définie à l'index ${this.squareList[origin].weapon.index}`);
-    }
-    const positionX = this.squareList[origin].positionX;
-    const positionY = this.squareList[orgin].positionY;
-    const squareSize = this.squareSize;
+    let canvasSquare = new Image();
+    canvasSquare = new Image();
+    canvasSquare.src = 'img/empty.png';
+    let positionX = this.squareList[origin].positionX;
+    let positionY = this.squareList[origin].positionY;
+    let squareSize = this.squareSize;
     canvasSquare.addEventListener('load', function() {
-    context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize, squareSize -2 , squareSize);
+    context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize + 1, squareSize -2 , squareSize - 2);
     });
   }
-
-  refreshTarget(target) {
+  refreshTarget(next) {
     let canvasSquare = new Image();
-
-    if (this.squareList[target].weapon === null) {
-      canvasSquare.src = this.squareList[target].object.skin;
-      this.squareList[target].object.index = i;
-      console.log(`Image ${this.squareList[target].object.name} définie à l'index ${this.squareList[target].object.index}`);
-    } else {
-
+		canvasSquare.src = 'img/empty.png';
+		let positionX = this.squareList[next].positionX;
+		let positionY = this.squareList[next].positionY;
+		let squareSize = this.squareSize;
+		canvasSquare.addEventListener('load', function() {
+		context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize + 1, squareSize -2 , squareSize - 2);
+		});
+    canvasSquare = new Image();
+		canvasSquare.src = this.squareList[next].object.skin;
+    this.squareList[next].object.index = next;
+    positionX = this.squareList[next].positionX;
+    positionY = this.squareList[next].positionY;
+    squareSize = this.squareSize;
+    context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize + 1, squareSize -2 , squareSize - 2);
+	}
+  refreshWeapon(origin) {
+    if (this.squareList[origin].weapon !== null) {
+      let canvasSquare = new Image();
+      canvasSquare.src = this.squareList[origin].weapon.skin;
+      let positionX = this.squareList[origin].positionX;
+      let positionY = this.squareList[origin].positionY;
+      let squareSize = this.squareSize;
+      canvasSquare.addEventListener('load', function() {
+      context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize + 1, squareSize -2 , squareSize - 2);
+      });
     }
-    const positionX = this.squareList[target].positionX;
-    const positionY = this.squareList[target].positionY;
-    const squareSize = this.squareSize;
-    canvasSquare.addEventListener('load', function() {
-    context.drawImage(canvasSquare, (positionX - 1) * squareSize + 1, (positionY -1 ) * squareSize, squareSize -2 , squareSize);
-    });
   }
 }

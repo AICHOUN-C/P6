@@ -132,7 +132,6 @@
 #playerOneWeaponImg, #playerTwoWeaponImg {
   min-height: 128px;
   min-width: 128px;
-  
 }
 .redPlayer, .bluePlayer {
   color: red;
