@@ -5,55 +5,53 @@ setTimeout(function () {
 }, 2000);
 
 //Fighter animation demo right and left to the middle
-var fighterLeft = document.getElementById("fighterLeft");
-var fighterRight = document.getElementById("fighterRight");
-var fighterSection = document.getElementById("fighterSection");
-var speed = 5; // Valeur du déplacement en pixels
+let fighterLeft = document.getElementById("fighterLeft");
+let fighterRight = document.getElementById("fighterRight");
+let fighterSection = document.getElementById("fighterSection");
+let speed = 5; // Movement value in pixel
 
-// Conversion en nombre du diamètre du bloc (valeur de la forme "XXpx")
-var figtherSectionWidth = parseFloat(getComputedStyle(fighterSection).width);
-var moveRight = null; // Identifiant de l'animation vers la droite
-var moveLeft = null; // Identifiant de l'animation vers la gauche
+// Block diameter conversion in number value (value form "XXpx")
+let figtherSectionWidth = parseFloat(getComputedStyle(fighterSection).width);
+let moveRight = null;
+let moveLeft = null;
 
-// Déplace le combattant de gauche vers la droite jusqu'au millieu du cadre
+// Move the tank from the left to the middle
 function moveLeftFighter() {
-  // Conversion en nombre de la position gauche du bloc (valeur de la forme "XXpx")
-  var xFigtherLeft = parseFloat(getComputedStyle(fighterLeft).left);
-  // Conversion en nombre de la largeur du cadre (valeur de la forme "XXpx")
-  var xMax = ((parseFloat(getComputedStyle(fighterSection).width))/2) -130;
-  if (xFigtherLeft <= xMax) { // Si le bloc n'est pas encore au bout du cadre
-    // Déplacement du bloc
+  // Convert left tank position in number value (value form "XXpx")
+  let xFigtherLeft = parseFloat(getComputedStyle(fighterLeft).left);
+  // Convert width in number value (value form "XXpx")
+  let xMax = ((parseFloat(getComputedStyle(fighterSection).width))/2) -130;
+  if (xFigtherLeft <= xMax) {
     fighterLeft.style.left = (xFigtherLeft + speed) + "px";
-    // Demande au navigateur d'appeler moveLeftFighter dès que possible
+    // Ask the web browser to call moveLeftFighter asap
     moveRight = requestAnimationFrame(moveLeftFighter);
   } else {
-    // Annulation de l'animation
+    // Cancel the animation
     cancelAnimationFrame(moveRight);
   }
 }
 
-// Déplace le combattant de droite vers la gauche jusqu'au millieu du cadre
+// Move the tank from the right to the middle
 function moveRightFighter() {
-  // Conversion en nombre de la position gauche du bloc (valeur de la forme "XXpx")
-  var xFigtherRight = parseFloat(getComputedStyle(fighterRight).right);
-  // Conversion en nombre de la largeur du cadre (valeur de la forme "XXpx")
-  var xMax = ((parseFloat(getComputedStyle(fighterSection).width))/2) -130;
-  if (xFigtherRight <= xMax) { // Si le bloc n'est pas encore au bout du cadre
-    // Déplacement du bloc
+  // Convert right tank position in number value (value form "XXpx")
+  let xFigtherRight = parseFloat(getComputedStyle(fighterRight).right);
+  // Convert width in number value (value form "XXpx")
+  let xMax = ((parseFloat(getComputedStyle(fighterSection).width))/2) -130;
+  if (xFigtherRight <= xMax) {
     fighterRight.style.right = (xFigtherRight + speed) + "px";
-    // Demande au navigateur d'appeler moveLeftFighter dès que possible
+    // Ask the web browser to call moveRightFighter asap
     moveLeft = requestAnimationFrame(moveRightFighter);
   } else {
-    // Annulation de l'animation
+    // Cancel the animation
     cancelAnimationFrame(moveLeft);
   }
 }
 
-moveRight = requestAnimationFrame(moveLeftFighter); // Début du déplacement vers la droite
-moveLeft = requestAnimationFrame(moveRightFighter); // Début du déplacement vers la gauche
+moveRight = requestAnimationFrame(moveLeftFighter); // Start to move to the right
+moveLeft = requestAnimationFrame(moveRightFighter); // Start to move to the left
 
 
-// Sélection Avatar joueur 1
+// Player on avatar selection
 $('.avatarOne').on({
   'click': function(){
     if (this.src === playerTwoAvatar.src){
@@ -66,7 +64,7 @@ $('.avatarOne').on({
   }
 });
 
-// Sélection avatar joueur 2
+// Player two avatar selection
 $('.avatarTwo').on({
   'click': function(){
     if (this.src === playerOneAvatar.src){
@@ -79,16 +77,18 @@ $('.avatarTwo').on({
   }
 });
 
-// Choix nom de personnage 1
+// Player one name choice
 $('#inputNameOne').on('input',function(e){
   $("#playerOneName").html($(this).val());
   playerOne.name = document.getElementById("inputNameOne").value;
+  document.getElementById("turnPlayerOne").textContent = `Tour de ${playerOne.name}`;
 });
 
-// Choix nom de personnage 2
+// Player two name choice
 $('#inputNameTwo').on('input',function(e){
   $("#playerTwoName").html($(this).val());
-  playerTwo.name = document.getElementById("inputNameTwo").value; 
+  playerTwo.name = document.getElementById("inputNameTwo").value;
+  document.getElementById("turnPlayerTwo").textContent = `Tour de ${playerTwo.name}`; 
 });
 
 function appendLogToDom(log, color) {
@@ -97,9 +97,22 @@ function appendLogToDom(log, color) {
 	// and give it some content 
 	para.innerHTML = log;
 	//Append <p> to <div> with id="complexQuote.display"
-  if (color ==='red') {
-	document.getElementById('message').appendChild(para).style.color = 'red';
+  if (color === 'red') {
+  para.setAttribute('class', 'redMessage');
+	document.getElementById('message').appendChild(para);
+  } else if (color === 'victory') {
+  para.setAttribute('class', 'victoryMessage');
+  document.getElementById('message').appendChild(para);
   } else {
-  document.getElementById('message').appendChild(para).style.color = 'blue';  
+  para.setAttribute('class', 'blueMessage');
+  document.getElementById('message').appendChild(para);  
+  }
+}
+
+function clearLog() {
+  const element = document.getElementById('message');
+  //remove each quote one bye one from the message div until it's empty
+  while (element.firstChild) {
+      element.removeChild(element.firstChild);
   }
 }

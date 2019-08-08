@@ -1,4 +1,3 @@
-// Définition de la classe joueur
 class Player {
   constructor(name) {
     this.name = name;
@@ -17,11 +16,10 @@ class Player {
     map.squareList[activePlayer.index].type = 'empty';
     map.squareList[activePlayer.index].object = null;
 		let origin = activePlayer.index;
-		let next = null;
-    //map.refreshOrigin(origin);
-    if (operator === 'less') {
+    if (operator === 'less') { // Moving to the left or upwards 
       if (map.squareList[activePlayer.index - lenght].type === 'player') {
         fight();
+        return;
       } else {
         activePlayer.index = activePlayer.index - lenght;
         positionXY = positionXY - lenght;
@@ -29,9 +27,10 @@ class Player {
         map.squareList[activePlayer.index].type = 'player';
         map.squareList[activePlayer.index].object = activePlayer;
         }
-    } else {
+    } else { // Moving to the right or downwards
       if (map.squareList[activePlayer.index + lenght].type === 'player') {
         fight();
+        return;
       } else {
         activePlayer.index = activePlayer.index + lenght;
         positionXY = positionXY + lenght;
@@ -40,13 +39,14 @@ class Player {
         map.squareList[activePlayer.index].object = activePlayer;
         }
       }
-		 	next = activePlayer.index
+		 	let next = activePlayer.index
       if (map.squareList[activePlayer.index].weapon !== null){
+        map.refreshBackGround(next);
         switchWeapon();
       }
-      map.refreshOrigin(origin);
-      map.refreshTarget(next);
+      map.refreshBackGround(origin);
       map.refreshWeapon(origin);
+      map.refreshPlayer(next);
 			if (activePlayer.steps < 3) {
 				endTurnDisplay();
 			}
@@ -68,9 +68,8 @@ class Player {
     target.def = 0;
     refreshPlayers();
     if (target.life <= 0){
-      let gameOver = new Audio('sounds/gameOver.wav');
-      gameOver.play();
-      alert(`${target.name}, n'a plus de points de vie, ${activePlayer.name} a gagné! La partie est terminée`);
+      victory(activePlayer);
+      return;
     }
     switchPlayerTurn()
   }

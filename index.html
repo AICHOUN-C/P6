@@ -10,7 +10,7 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
+    
   </head>
 
   <body>
@@ -57,12 +57,12 @@
             </div>
             <div class="col-md-12 col-lg-12" id="gameMenu">
               <div class="col-md-6 col-lg-6" id="playerOneMenu">
-                <h3>Tour joueur 1</h3>
+                <p id = 'turnPlayerOne'></p>
                 <button class="btn btn-danger" onclick="playerOne.attack(playerOne, playerTwo)">Attaquer</button>
                 <button class="btn btn-primary" onclick="playerOne.defend(playerOne, playerTwo)">Défendre</button>
               </div>
               <div class="col-md-6 col-lg-6" id="playerTwoMenu">
-                <h3>Tour joueur 2</h3>
+                <p id = 'turnPlayerTwo'></p>
                 <button class="btn btn-danger" onclick="playerTwo.attack(playerTwo, playerOne)">Attaquer</button>
                 <button class="btn btn-primary" onclick="playerTwo.defend(playerTwo, playerOne)">Défendre</button>
               </div>
@@ -113,7 +113,6 @@
             <select id="mapSize" class="handCursor" size=1>
                 <option value=0>Mode normal : 10 x 10</option>
                 <option value=1>Mode difficile : 12 x 12</option>
-                <option value=2>Mode expert : 14 x 14</option>
             </select>
             <button class="btn btn-primary" onclick="createMap()">Générer la carte</button>
             </div>
