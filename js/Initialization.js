@@ -76,13 +76,11 @@ if ((playerOne.skin === null) || (playerTwo.skin === null)){
 	selectActivePlayer();
   alert(`La partie commence, c'est le tour de ${activePlayer.name}!
 
-    Pour vous déplacez utliser les touches :
+    Pour vous déplacer, utlisez les touches :
     - Flèche haut, z ou w pour aller vers le haut.
     - Flèche bas ou s pour le bas.
     - Flèche gauche, q ou a pour la gauche.
-    - Flèche droite ou d pour la droite.
-    
-    Pour ramasser une arme il suffit de passer dessus, le combat se déclenche dès que les joueurs sont sur des cases adjacentes.`);
+    - Flèche droite ou d pour la droite.`);
   movePlayer(map);
 	}
 } 
