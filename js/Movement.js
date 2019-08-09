@@ -1,29 +1,42 @@
-function movePlayer (activePlayer, map) {
-  window.onkeydown = function(event) {
-  // On récupère le code de la touche
-  var e = event || window.event;
-  var key = e.which || e.keyCode;
-
+function movePlayer() {
+  window.onkeydown = function(event){
+  let e = event || window.event;
+  let key = e.which || e.keyCode;
+    
     switch(key) {
-      case 38 : case 122 : case 119 : case 90 : case 87 : // Flèche haut, z, w, Z, W
-        moveToUp(activePlayer);
-        map.display();
+      case 38 : case 122 : case 119 : case 90 : case 87 : // Up arrow, z, w, Z, W
+        if (activePlayer.index < map.width || map.squareList[activePlayer.index - map.width].type === 'wall') {
+          console.log(`Déplacement impossible`);
+          return false;
+        } else {
+          activePlayer.move(activePlayer.positionY, 'less', map.width)
+          }
         break;
-      case 40 : case 115 : case 83 : // Flèche bas, s, S
-        moveToDown(activePlayer);
-        map.display();
+      case 40 : case 115 : case 83 : // Down arrow, s, S
+        if (activePlayer.index >= ((map.width * map.width) - map.width) || map.squareList[activePlayer.index + map.width].type === 'wall') {
+          console.log(`Déplacement impossible`);
+          return false;
+        } else {
+            activePlayer.move(activePlayer.positionY, 'more', map.width)
+          }
         break;
-      case 37 : case 113 : case 97 : case 81 : case 65 : // Flèche gauche, q, a, Q, A
-        moveToLeft(activePlayer);
-        map.display();
+      case 37 : case 113 : case 97 : case 81 : case 65 : // Left arrow, q, a, Q, A
+        if (activePlayer.index % map.width === 0 || map.squareList[activePlayer.index - 1].type === 'wall') {
+          console.log(`Déplacement impossible`);
+          return false;
+        } else {
+            activePlayer.move(activePlayer.positionX, 'less', 1);
+          }
         break;
-      case 39 : case 100 : case 68 : // Flèche droite, d, D
-        moveToRight(activePlayer);
-        map.display();
+      case 39 : case 100 : case 68 : // Right arrow, d, D
+        if (activePlayer.index % map.width === (map.width - 1) || map.squareList[activePlayer.index + 1].type === 'wall') {
+          console.log(`Déplacement impossible`);
+          return false;
+        } else {
+            activePlayer.move(activePlayer.positionX, 'more', 1)
+          }
         break;
       default : 
-        //alert(key);
-        // Si la touche ne nous sert pas, nous n'avons aucune raison de bloquer son comportement normal.
         return true;
     }
     return false;

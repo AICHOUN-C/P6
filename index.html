@@ -10,7 +10,7 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
+    
   </head>
 
   <body>
@@ -40,13 +40,34 @@
                     <img id="playerOneStepImg" src="img/smallStep.png" alt="Image de pas" title="Nombre de déplacement restant" />
                     <p id="playerOneStep" class="redPlayer">3</p>
                 </div>
+								<div class="hidden" id="playerOneTurn">
+									<button class="btn btn-warning" onclick="switchPlayer()">Terminer le tour</button>
+								</div>
             </div>
             <div class="attribute weapon">
                 <p id="playerOneWeaponName"> Taser défensif </p>
                 <img id="playerOneWeaponImg" src="img/mediumWeapon1.png" alt="Image d'arme'" />
             </div>
         </div>
-    
+          <div class="col-md-6 col-lg-8 hidden" id="fightMenu">
+            <div class="fightMessage">
+              <h3>Messages de combat :</h3>
+              <div id="message">
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-12" id="gameMenu">
+              <div class="col-md-6 col-lg-6" id="playerOneMenu">
+                <p id = 'turnPlayerOne'></p>
+                <button class="btn btn-danger" onclick="playerOne.attack(playerOne, playerTwo)">Attaquer</button>
+                <button class="btn btn-primary" onclick="playerOne.defend(playerOne, playerTwo)">Défendre</button>
+              </div>
+              <div class="col-md-6 col-lg-6" id="playerTwoMenu">
+                <p id = 'turnPlayerTwo'></p>
+                <button class="btn btn-danger" onclick="playerTwo.attack(playerTwo, playerOne)">Attaquer</button>
+                <button class="btn btn-primary" onclick="playerTwo.defend(playerTwo, playerOne)">Défendre</button>
+              </div>
+            </div>
+          </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 gameMap">
             <div class="avatarsSection">
                 <div id="avatarsSectionLeft">
@@ -92,7 +113,6 @@
             <select id="mapSize" class="handCursor" size=1>
                 <option value=0>Mode normal : 10 x 10</option>
                 <option value=1>Mode difficile : 12 x 12</option>
-                <option value=2>Mode expert : 14 x 14</option>
             </select>
             <button class="btn btn-primary" onclick="createMap()">Générer la carte</button>
             </div>
@@ -113,7 +133,10 @@
                 <div class="attribute cara"> 
                     <img id="playerTwoStepImg" src="img/smallStep.png" alt="Image de pas" title="Nombre de déplacement restant" />
                     <p id="playerTwoStep" class="bluePlayer">3</p>
-                </div>              
+                </div>
+								<div class="hidden" id="playerTwoTurn">
+									<button class="btn btn-warning" onclick="switchPlayer()">Terminer le tour</button>
+								</div>
             </div>
             <div class="attribute weapon">
                 <p id="playerTwoWeaponName"> Taser défensif </p>
