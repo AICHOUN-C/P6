@@ -8,10 +8,6 @@
 	font-family: 'Pacifico';
 	src: url('../polices/pacifico/Pacifico.ttf');
 }
-
-/*body {
-    background: #b6d369 !important;
-}*/
 .containerHeader {
 	background-color : #898952;
 	min-height: 200px;
@@ -37,85 +33,82 @@
     padding-top: 20px;
 }
 #playerOneName {
-    color: red;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 25px 0 25px 0;
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 25px 0 25px 0;
 }
 #playerTwoName {
-    color: blue;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 25px 0 25px 0;
+  color: blue;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 25px 0 25px 0;
 }
 .playerTwo {
-    background-color: #93c48b;
-    padding-top: 20px;
+  background-color: #93c48b;
+  padding-top: 20px;
 }
 .gameMap {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-right : 0px !important;
-    padding-left: 0px !important;
+  padding-right : 0px !important;
+  padding-left: 0px !important;
 }
 #contact {
-    background-color: blanchedalmond;
-    text-align: center;
+  background-color: blanchedalmond;
+  text-align: center;
 }
 #fighterSection{
-    height: 70px;
-    margin-top: 30px;
+  height: 70px;
+  margin-top: 30px;
 }
 #fighterLeft{
-    position: relative;
-    left: 0px;
-    max-height: 84px;
-    max-width:  84px;
+  position: relative;
+  left: 0px;
+  max-height: 84px;
+  max-width:  84px;
 }
 #fighterRight {
-    position: absolute;
-    right: 0px;
-    max-height: 84px;
-    max-width:  84px;
+  position: absolute;
+  right: 0px;
+  max-height: 84px;
+  max-width:  84px;
 }
 .avatarsSection {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .mapSelection {
-    background-color: #b6d369;
-    min-height: 240px;
-    padding-top: 50px;
+  background-color: #b6d369;
+  min-height: 360px;
+  padding-top: 50px;
 }
 .avatarSectionTitle {
-    padding: 20px 0 20px 0;
-    color: black;
-    font-style: italic;
-    font-weight: bold;
+  padding: 20px 0 20px 0;
+  color: black;
+  font-style: italic;
+  font-weight: bold;
 }
 #avatarsSectionLeft {
-    background-color: #b2945b;
-    min-height: 400px;
-    flex: 1 auto;
+  background-color: #b2945b;
+  min-height: 400px;
+  flex: 1 auto;
 }
 #avatarsSectionRight {
-    background-color: #93c48b;
-    min-height: 400px;
-    flex: 1 auto;
+  background-color: #93c48b;
+  min-height: 400px;
+  flex: 1 auto;
 }
 .selectName {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 .avatarOne, .avatarTwo {
-    max-height: 64px;
-    max-width: 64px;
+  max-height: 64px;
+  max-width: 64px;
 }
 .handCursor {
-    cursor: pointer;
+  cursor: pointer;
 }
 .cara {
-    display: inline-block;
+  display: inline-block;
 }
 #playerOneAvatar, #playerTwoAvatar {
   margin-bottom: 30px;
@@ -123,36 +116,72 @@
   max-width: 128px;
 }
 #playerOneAttributes, #playerTwoAttributes {
-    padding: 0 40px 0 40px;
+  padding: 0 40px 0 40px;
 }
 #playerOneWeaponName, #playerTwoWeaponName {
-    font-weight: bold;
-    font-size: 1.5em;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 #playerOneWeaponImg, #playerTwoWeaponImg {
   min-height: 128px;
   min-width: 128px;
-  
 }
 .redPlayer, .bluePlayer {
-    color: red;
-    font-weight: bold;
-    font-size: 1.5em;
+  color: red;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 .bluePlayer {
-    color: blue;
-    font-weight: bold;
+  color: blue;
+  font-weight: bold;
 }
 .weapon {
-    margin-top: 30px;
-    justify-content: center;
+  margin-top: 30px;
+  justify-content: center;
 }
 canvas {
-    width: 100%;
-    background-color: #b6d369;
+  width: 100%;
+  background-color: #b6d369;
 }
 .hidden {
-    display : none;
+  display : none;
+}
+#gameMenu {
+  background-color: #b6d369;
+  min-height: 640px;
+  display: flex;
+  justify-content: space-around;
+}
+#fightMenu {
+  background-color: #b6d369;
+}
+.fightMessage {
+  min-height: 460px;
+  background-color: #b6d369;
+}
+#playerOneMenu{
+  background-color: #b2945b;
+  height: 140px;
+}
+#playerTwoMenu{
+  background-color: #93c48b;
+  height: 140px;
+}
+#turnPlayerOne, #turnPlayerTwo {
+  font-size: 24px;
+  font-style: bold;
+}
+.redMessage {
+  color: red;
+}
+.blueMessage {
+  color: blue;
+}
+.victoryMessage {
+  font-size: 30px;
+  color: green;
+  font-style: italic;
+  margin-top: 40px;
 }
 /* Styles pour les Smartphone*/
 
