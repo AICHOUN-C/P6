@@ -42,6 +42,9 @@ let map = null;
 const playerOneBorder = document.getElementById("playerOneAvatar");
 const playerTwoBorder = document.getElementById("playerTwoAvatar");
 
+// First weaponSwitch message variable
+let weaponSwitchMessage = 0;
+
 // Fight log variable
 let log = null;
 let menuOne = document.getElementById('playerOneMenu');

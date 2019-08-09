@@ -8,10 +8,6 @@
 	font-family: 'Pacifico';
 	src: url('../polices/pacifico/Pacifico.ttf');
 }
-
-/*body {
-    background: #b6d369 !important;
-}*/
 .containerHeader {
 	background-color : #898952;
 	min-height: 200px;
@@ -53,9 +49,6 @@
   padding-top: 20px;
 }
 .gameMap {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding-right : 0px !important;
   padding-left: 0px !important;
 }
@@ -85,7 +78,7 @@
 }
 .mapSelection {
   background-color: #b6d369;
-  min-height: 240px;
+  min-height: 360px;
   padding-top: 50px;
 }
 .avatarSectionTitle {

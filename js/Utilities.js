@@ -154,6 +154,13 @@ function switchWeapon() {
   activePlayer.power = activePlayer.weapon.damage;
   let weaponSwitch = new Audio('sounds/weaponSwitch.wav');
   weaponSwitch.play();
+  if (weaponSwitchMessage === 0){
+  alert(`Bravo, vous venez de ramasser votre première arme, 
+        il vous suffit en effet de passer sur une case contenant une arme,
+        pour la prendre et déposer celle que vous possédée!`);
+    weaponSwitchMessage = 1;
+    return weaponSwitchMessage;
+  }
 }
     
 function target() {
