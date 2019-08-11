@@ -12,31 +12,35 @@ class Player {
     this.steps = 3;
   }
   
-  move(positionXY, operator, lenght) {
+  move(position, operator, lenght) {
     map.squareList[activePlayer.index].type = 'empty';
     map.squareList[activePlayer.index].object = null;
 		let origin = activePlayer.index;
     if (operator === 'less') { // Moving to the left or upwards 
       if (map.squareList[activePlayer.index - lenght].type === 'player') {
-        alert(`Veuillez utiliser la version final du jeu pour accéder au combat`);
+        fight();
         return;
       } else {
         activePlayer.index = activePlayer.index - lenght;
-        positionXY = positionXY - lenght;
         activePlayer.steps--;
         map.squareList[activePlayer.index].type = 'player';
         map.squareList[activePlayer.index].object = activePlayer;
+          if (position === 'positionX') {
+            activePlayer.positionX = activePlayer.positionX - 1;
+          } else { activePlayer.positionY = activePlayer.positionY - 1 }
         }
     } else { // Moving to the right or downwards
       if (map.squareList[activePlayer.index + lenght].type === 'player') {
-        alert(`Veuillez utiliser la version final du jeu pour accéder au combat`);
+        fight();
         return;
       } else {
         activePlayer.index = activePlayer.index + lenght;
-        positionXY = positionXY + lenght;
         activePlayer.steps--;   
         map.squareList[activePlayer.index].type = 'player';
         map.squareList[activePlayer.index].object = activePlayer;
+          if (position === 'positionX') {
+            activePlayer.positionX = activePlayer.positionX + 1;
+          } else { activePlayer.positionY = activePlayer.positionY + 1 }
         }
       }
 		 	let next = activePlayer.index
