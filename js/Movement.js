@@ -9,7 +9,7 @@ function movePlayer() {
           console.log(`Déplacement impossible`);
           return false;
         } else {
-          activePlayer.move(activePlayer.positionY, 'less', map.width)
+          activePlayer.move('positionY', 'less', map.width)
           }
         break;
       case 40 : case 115 : case 83 : // Down arrow, s, S
@@ -17,7 +17,7 @@ function movePlayer() {
           console.log(`Déplacement impossible`);
           return false;
         } else {
-            activePlayer.move(activePlayer.positionY, 'more', map.width)
+            activePlayer.move('positionY', 'more', map.width)
           }
         break;
       case 37 : case 113 : case 97 : case 81 : case 65 : // Left arrow, q, a, Q, A
@@ -25,7 +25,7 @@ function movePlayer() {
           console.log(`Déplacement impossible`);
           return false;
         } else {
-            activePlayer.move(activePlayer.positionX, 'less', 1);
+            activePlayer.move('positionX', 'less', 1);
           }
         break;
       case 39 : case 100 : case 68 : // Right arrow, d, D
@@ -33,7 +33,7 @@ function movePlayer() {
           console.log(`Déplacement impossible`);
           return false;
         } else {
-            activePlayer.move(activePlayer.positionX, 'more', 1)
+            activePlayer.move('positionX', 'more', 1)
           }
         break;
       default : 
